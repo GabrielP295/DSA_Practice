@@ -8,6 +8,6 @@ This repository tracks my progress through a variety of different **Leetcode** p
 - Consistent daily practice and iterative review through spaced repitition
 
 ## Language & Tools
-- **Language:** Java 17+
+- **Language:** Java 21 and Java 25
 - **Environment:** LeetCode / NeetCode
 - **Syncing:** [LeetHub](https://chromewebstore.google.com/detail/leetsync-leetcode-to-gith/ppkbejeolfcbaomanmbpjdbkfcjfhjnd?hl=en) (Auto sync submissions)
