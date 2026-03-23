@@ -1,27 +1,29 @@
 class Solution {
-    public int maxProfit(int[] prices) {
-        /*
-        Input: array of integers where index is the day and value is the price
-        Output: maximum profit that can be achieved
-        prices are btwn 0 and 100, the nubmer of days is btwn 1 and 100
+    /*
+    Input: array of ints where value is price of stock on give day(index)
+    Output: maximum profit that can be achieved, if none possible -> 0
+    Constraints: only one transaction completed, stock must be sold after bought,
+    prices of stock will always be positive
+    Ex. [4, 3, 6, 2, 5, 12, 0, 4] -> 10
+            ^  ^
 
-        Brute force -> calculating every single possibility and track the max profit
+    Ex. [10, 4, 3, 2, 1, 0] -> 0
 
-        currentMax = 3
-        [1, 0, 4, 0, 2, 3, 6]
-                  ^        ^ 
-        -In order to max profit, buying low and selling high
-        */
-        int maxProfit = 0;
+    Approach: window that keeps track of max profit
+    - minimize the price of buying a stock, and maximizing sell -> buy low, sell high
+    - move left pointer to right pointer when right value becomes smaller than left
+    - always increment the right pointer by one
+     */
+    public int maxProfit(int[] stocks) {
         int left = 0;
-        int right = 1;
-        while (right < prices.length) {
-            while (prices[right] < prices[left] && right < prices.length - 1) {
+        int right = 0;
+        int maxProfit = 0;
+
+        while (right < stocks.length) {
+            maxProfit = Math.max(maxProfit, stocks[right] - stocks[left]);
+            if (stocks[right] < stocks[left]) {
                 left = right;
-                right++;
             }
-            int currentProfit = prices[right] - prices[left];
-            maxProfit = Math.max(currentProfit, maxProfit);
             right++;
         }
 
