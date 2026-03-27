@@ -9,25 +9,28 @@
  * }
  */
 class Solution {
+    /*
+    Input: head of singly linked list
+    Output: head of reversed input list
+    - The list may be empty
+    Ex. null [1, 5, 3, 6] null ->
+    null -> [5 -> 1] null
+
+    Approach:
+    - storing previous node to set the current nodes next pointer to the previous
+    - temporarily store the next node before changing current so we can iterate
+     */
     public ListNode reverseList(ListNode head) {
-        /*
-        * Input: the linked list starting at the head node
-        * Output: same linked list but reversed
-        * 
-        * iterate through the linked list
-        * save the previous node, and get make the current node point to it
-        */
-        
         ListNode previous = null;
         ListNode current = head;
 
         while (current != null) {
-            ListNode next = current.next;
+            ListNode currentNext = current.next;
             current.next = previous;
             previous = current;
-            current = next;
+            current = currentNext;
         }
-        
+
         return previous;
     }
 }
